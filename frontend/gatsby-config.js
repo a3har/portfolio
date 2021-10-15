@@ -2,13 +2,13 @@ module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Muhammad Azhar`,
+      summary: `who lives and works in Kannur building useful things.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Blog where interesting things are discussed.`,
+    siteUrl: `https://a3har.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `musthafa_azhar`,
     },
   },
   plugins: [
