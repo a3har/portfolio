@@ -7,3 +7,5 @@ ENV PATH /node_modules/.bin:$PATH
 RUN npm install -g gatsby-cli
 
 RUN npm install
+
+EXPOSE 8000
