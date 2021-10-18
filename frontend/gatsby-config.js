@@ -7,10 +7,8 @@ if (process.env.NODE_ENV !== "production") {
 module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
-    author: {
-      name: `Muhammad Azhar`,
-      summary: `who lives and works in Kannur building useful things.`,
-    },
+    author: `Muhammad Azhar`,
+
     description: `Blog where interesting things are discussed.`,
     siteUrl: `https://a3har.com/`,
     social: {
@@ -140,7 +138,6 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-    `@contentful/gatsby-transformer-contentful-richtext`,
     {
       resolve: `@lekoarts/gatsby-theme-cara`,
       // See the theme's README for all available options
