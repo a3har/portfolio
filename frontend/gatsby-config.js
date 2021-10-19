@@ -86,7 +86,9 @@ module.exports = {
                   {
                     title: node.title,
                     description: node.description,
-                    // date: node.createdAt,
+                    date: new Date(node.createdAt)
+                      .toLocaleDateString()
+                      .replaceAll("/", "-"),
                     url: site.siteMetadata.siteUrl + "/blogs/" + node.slug,
                     guid: site.siteMetadata.siteUrl + "/blogs/" + node.slug,
                     // custom_elements: [
@@ -113,6 +115,7 @@ module.exports = {
                       content {
                         raw
                       }
+                      createdAt
                     }
                   }
                 }

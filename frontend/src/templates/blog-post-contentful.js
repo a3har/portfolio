@@ -4,6 +4,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { format } from "../utils/date"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.contentfulPost
@@ -19,7 +20,7 @@ const BlogPostTemplate = ({ data, location }) => {
       >
         <header>
           <h1 itemProp="headline">{post.title}</h1>
-          {/* <p>{post.frontmatter.date}</p> */}
+          <p>{format(post.createdAt)}</p>
         </header>
         {renderRichText(post.content)}
         <hr />
@@ -72,6 +73,7 @@ export const pageQuery = graphql`
       content {
         raw
       }
+      createdAt
     }
   }
 `

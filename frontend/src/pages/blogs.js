@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { format } from "../utils/date"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -24,7 +25,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="All posts" />
+      <Seo title="Muhammad Azhar | Blog" />
       <Bio />
       <ol style={{ listStyle: `none` }}>
         {posts.map(({ node }) => {
@@ -43,7 +44,7 @@ const BlogIndex = ({ data, location }) => {
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  {/* <small>{node.date}</small> */}
+                  <small>{format(node.createdAt)}</small>
                 </header>
                 <section>
                   <p
@@ -77,6 +78,7 @@ export const pageQuery = graphql`
           title
           description
           slug
+          createdAt
         }
       }
     }

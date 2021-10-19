@@ -18,7 +18,7 @@ import Hero from "../components/hero"
 const Home = ({ data, location }) => {
   return (
     <Layout>
-      <Seo title="404 - Not Found" />
+      <Seo title="Muhammad Azhar | Home" />
       <Parallax pages={5}>
         <Hero offset={0} factor={1} />
       </Parallax>
