@@ -21,13 +21,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
@@ -88,7 +81,7 @@ module.exports = {
                     description: node.description,
                     date: new Date(node.createdAt)
                       .toLocaleDateString()
-                      .replaceAll("/", "-"),
+                      .replace(/\//, "-"),
                     url: site.siteMetadata.siteUrl + "/blogs/" + node.slug,
                     guid: site.siteMetadata.siteUrl + "/blogs/" + node.slug,
                     // custom_elements: [
