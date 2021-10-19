@@ -1,4 +1,5 @@
 const dotenv = require("dotenv")
+const { renderRichText } = require("gatsby-source-contentful/rich-text")
 
 if (process.env.NODE_ENV !== "production") {
   dotenv.config()
@@ -78,31 +79,40 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
-                })
+            serialize: ({ query: { site, allContentfulPost } }) => {
+              return allContentfulPost.edges.map(({ node }) => {
+                return Object.assign(
+                  {},
+                  {
+                    title: node.title,
+                    description: node.description,
+                    // date: node.createdAt,
+                    url: site.siteMetadata.siteUrl + "/blogs/" + node.slug,
+                    guid: site.siteMetadata.siteUrl + "/blogs/" + node.slug,
+                    // custom_elements: [
+                    //   { "content:encoded": renderRichText(node.content) },
+                    // ],
+                  }
+                )
               })
             },
             query: `
               {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
+                site {
+                  siteMetadata {
+                    title
+                    siteUrl
+                  }
+                }
+                allContentfulPost {
+                  edges {
+                    node {
                       title
-                      date
+                      description
+                      slug
+                      content {
+                        raw
+                      }
                     }
                   }
                 }

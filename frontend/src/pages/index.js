@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 
 import { Parallax } from "@react-spring/parallax"
 // import { Themed } from "theme-ui"
